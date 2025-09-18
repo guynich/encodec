@@ -20,7 +20,7 @@ These steps tested on:
 > * macOS 15.7
 > * Python 3.12.6
 >
-> I used `brew` on MacBook to install `git` and `pyenv`.
+> I used `brew` on macOS to install `git` and `pyenv`.
 
 1. Clone this repo.
 ```bash
@@ -51,7 +51,7 @@ versions 4-7 of FFMPEG.  On macOS there is
 with `brew` installed FFMPEG versions.  In this section we'll build FFMPEG
 version 7.1.2.
 
-Make sure you have Homebrew installed.
+Install build tools using `brew`.
 ```bash
 brew update
 brew install autoconf cmake
@@ -62,15 +62,14 @@ cd
 git clone https://git.ffmpeg.org/ffmpeg.git ffmpeg
 cd ffmpeg
 ```
-Checkout the version-7.1.2 branch (or the tag you want).
+Checkout version-7.1.2 branch (or any version supported by PyTorch `torchcodec`).
 ```bash
 git checkout n7.1.2
 ```
-Configure with the options you require.
+Configure minimal build to produce `.dylib` shared libraries.
 ```bash
 ./configure \
   --prefix=/usr/local/ffmpeg7 \
-  --enable-gpl \
   --enable-shared \
   --disable-static \
   --enable-pthreads
@@ -83,7 +82,7 @@ Install.
 ```bash
 sudo make install
 ```
-The library needed for PyTorch `torchcodec` is found in this folder.
+The shared `.dylib` library needed by PyTorch `torchcodec` is in this folder.
 ```bash
 ls /usr/local/ffmpeg7/lib | grep libavutil
 ```
@@ -116,11 +115,16 @@ Reconstructed shape:   torch.Size([1, 1, 140520]) (batch_size, channels, samples
 ```
 
 ## Optional clean-up
+Remove cloned repos, virtual environment and FFMPEG files.
 ```bash
 cd
 rm -rf encodec
 rm -rf ffmpeg
-rm -rf /usr/local/ffmpeg7
+
+deactivate
+rm -rf .venv_encodec
+
+sudo rm -rf /usr/local/ffmpeg7
 ```
 
 ## References
