@@ -5,7 +5,7 @@ predict sequences of these audio tokens, the model can generate or reconstruct
 audible sound.
 
 This script plays the original and reconstructed audio for a chosen bandwidth
-using [`Encodec`](https://github.com/facebookresearch/encodec).
+using [`EnCodec`](https://github.com/facebookresearch/encodec).
 
 - [1. Setup](#1-setup)
 - [2. Run script](#2-run-script)
@@ -129,7 +129,7 @@ sudo rm -rf /usr/local/ffmpeg7
 
 ## References
 
-The code in `main.py` script is adapted from the Encodec repo example.
+The code in `main.py` script is adapted from the EnCodec repo example.
 
-* Encodec repo: https://github.com/facebookresearch/encodec
+* EnCodec repo: https://github.com/facebookresearch/encodec
 * FFMPEG repo: https://github.com/FFmpeg/FFmpeg
