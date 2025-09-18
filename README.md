@@ -27,7 +27,7 @@ These steps tested on:
 git clone git@github.com:guynich/encodec.git
 ```
 
-1. Install dependencies
+2. Install dependencies
 
 Create a Python environment and activate it.
 ```bash
